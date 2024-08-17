@@ -33,7 +33,7 @@ public class FilaCircularAutomatica {
 
     public int remove() {
         if (vazia()) {
-            throw new RuntimeException("Fila vazia! Não é possível remover elementos.");
+            throw new RuntimeException("Fila vazia, não é possível remover elementos.");
         }
         int elementoRemovido = fila[inicio];
         inicio = (inicio + 1) % capacidade;
@@ -43,14 +43,14 @@ public class FilaCircularAutomatica {
 
     public int primeiro() {
         if (vazia()) {
-            throw new RuntimeException("Fila vazia! Não há elementos para exibir.");
+            throw new RuntimeException("Fila vazia, não há elementos para exibir.");
         }
         return fila[inicio];
     }
 
     public int ultimo() {
         if (vazia()) {
-            throw new RuntimeException("Fila vazia! Não há elementos para exibir.");
+            throw new RuntimeException("Fila vazia, não há elementos para exibir.");
         }
         return fila[fim];
     }

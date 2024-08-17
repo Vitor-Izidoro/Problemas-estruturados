@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         // Criar uma instância da FilaCircular
-        FilaCircular fila = new FilaCircular(5);
+        FilaCircularAutomatica fila = new FilaCircularAutomatica(5);
 
         // Testar as operações da fila
         fila.insere(10);
@@ -12,11 +12,14 @@ public class Main {
         System.out.println("Primeiro elemento: " + fila.primeiro());
         System.out.println("Último elemento: " + fila.ultimo());
 
-        fila.remove();
+        //fila.remove();
         fila.insere(50);
         fila.insere(60);
-        fila.remove();
+        //fila.remove();
         fila.insere(70);
+        fila.insere(80);
+        fila.insere(90);
+        fila.insere(100);
         System.out.println("Primeiro elemento após remoção: " + fila.primeiro());
         System.out.println("Último elemento após inserção: " + fila.ultimo());
     }
