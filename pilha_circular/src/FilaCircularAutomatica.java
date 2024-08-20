@@ -23,11 +23,18 @@ public class FilaCircularAutomatica {
 
     public void insere(int elemento) {
         if (cheia()) {
-            // Se a fila estiver cheia, remove o primeiro elemento automaticamente
             remove();
         }
+
+        // Encontra a posição correta para o novo elemento
+        int i = tamanho - 1;
+        while (i >= 0 && fila[(inicio + i) % capacidade] > elemento) {
+            fila[(inicio + i + 1) % capacidade] = fila[(inicio + i) % capacidade];
+            i--;
+        }
+        fila[(inicio + i + 1) % capacidade] = elemento;
+
         fim = (fim + 1) % capacidade;
-        fila[fim] = elemento;
         tamanho++;
     }
 
@@ -55,27 +62,38 @@ public class FilaCircularAutomatica {
         return fila[fim];
     }
 
-    public static void main(String[] args) {
-        FilaCircular fila = new FilaCircular(5);
+    public FilaCircularAutomatica merge(FilaCircularAutomatica outraFila) {
+        FilaCircularAutomatica filaResultante = new FilaCircularAutomatica(this.capacidade + outraFila.capacidade);
 
-        fila.insere(10);
-        fila.insere(20);
-        fila.insere(30);
-        fila.insere(40);
-        fila.insere(50);
+        int i = 0, j = 0;
+        int[] fila1 = this.fila;
+        int[] fila2 = outraFila.fila;
 
-        System.out.println("Primeiro elemento: " + fila.primeiro());
-        System.out.println("Último elemento: " + fila.ultimo());
+        while (i < this.tamanho && j < outraFila.tamanho) {
+            int elemento1 = fila1[(this.inicio + i) % this.capacidade];
+            int elemento2 = fila2[(outraFila.inicio + j) % outraFila.capacidade];
 
-        // Insere novo elemento, removendo o mais antigo automaticamente
-        fila.insere(60);
+            if (elemento1 <= elemento2) {
+                filaResultante.insere(elemento1);
+                i++;
+            } else {
+                filaResultante.insere(elemento2);
+                j++;
+            }
+        }
 
-        System.out.println("Primeiro elemento após inserção automática: " + fila.primeiro());
-        System.out.println("Último elemento após inserção automática: " + fila.ultimo());
+        // Inserir os elementos restantes da fila original
+        while (i < this.tamanho) {
+            filaResultante.insere(fila1[(this.inicio + i) % this.capacidade]);
+            i++;
+        }
 
-        fila.insere(70);
+        // Inserir os elementos restantes da outra fila
+        while (j < outraFila.tamanho) {
+            filaResultante.insere(fila2[(outraFila.inicio + j) % outraFila.capacidade]);
+            j++;
+        }
 
-        System.out.println("Primeiro elemento após nova inserção: " + fila.primeiro());
-        System.out.println("Último elemento após nova inserção: " + fila.ultimo());
+        return filaResultante;
     }
 }
