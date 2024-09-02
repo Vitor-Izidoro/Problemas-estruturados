@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Pilha-Aplicacoes/Pilha-Aplicacoes.iml" filepath="$PROJECT_DIR$/Pilha-Aplicacoes/Pilha-Aplicacoes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Problemas-estruturados.iml" filepath="$PROJECT_DIR$/.idea/Problemas-estruturados.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lista simplesmente encadeada/lista simplesmente encadeada.iml" filepath="$PROJECT_DIR$/lista simplesmente encadeada/lista simplesmente encadeada.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pilha_circular/pilha_circular.iml" filepath="$PROJECT_DIR$/pilha_circular/pilha_circular.iml" />
+    </modules>
+  </component>
+</project>
