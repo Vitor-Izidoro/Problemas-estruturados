@@ -129,4 +129,36 @@ class ListaSimplesmenteEncadeada {
     public Node getHead() {
         return head;
     }
+    public ListaSimplesmenteEncadeada intersecaoOrdenada(ListaSimplesmenteEncadeada outraLista) {
+        ListaSimplesmenteEncadeada resultado = new ListaSimplesmenteEncadeada();
+
+        Node currentX = this.getHead();
+
+        while (currentX != null) {
+            Node currentY = outraLista.getHead();
+
+            while (currentY != null) {
+                if (currentX.data == currentY.data) {
+                    if (!resultado.contem(currentX.data)) {  // Evita duplicatas no resultado
+                        resultado.insere_ordenado(currentX.data);
+                    }
+                }
+                currentY = currentY.next;
+            }
+            currentX = currentX.next;
+        }
+
+        return resultado;
+    }
+
+    public boolean contem(int info) {
+        Node current = this.getHead();
+        while (current != null) {
+            if (current.data == info) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
 }

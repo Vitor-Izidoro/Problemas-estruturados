@@ -28,5 +28,11 @@ public class Main {
 
         double cosineSimilarity = CosineSimilarity.calculateCosineSimilarity(lista, lista2);
         System.out.println("Similaridade do Cosseno: " + cosineSimilarity);
+
+        ListaSimplesmenteEncadeada interseccao = lista.intersecaoOrdenada(lista2);
+
+        // Mostra a lista da interseção
+        System.out.print("Interseção ordenada: ");
+        interseccao.mostra_lista(); // Output esperado: 3 5
     }
 }
