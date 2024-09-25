@@ -1,14 +1,3 @@
-class Node {
-    int data; // Dado armazenado no nó
-    Node next; // Referência para o próximo nó na lista
-
-    // Construtor que inicializa o nó com o dado fornecido
-    public Node(int data) {
-        this.data = data;
-        this.next = null;
-    }
-}
-
 // Classe que representa uma lista simplesmente encadeada
 class ListaSimplesmenteEncadeada {
     private Node head;
