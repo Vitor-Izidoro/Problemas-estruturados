@@ -1,6 +1,8 @@
+package sort;
+
 public class HeapSort {
     // Método principal que ordena um array
-    public void sort(int[] array) {
+    public static void sort(long[] array) {
         int n = array.length;
 
         // Construir o heap (reorganizar o array)
@@ -19,7 +21,7 @@ public class HeapSort {
     }
 
     // Para manter a propriedade do heap
-    private void heapify(int[] array, int n, int i) {
+    private static void heapify(long[] array, int n, int i) {
         int largest = i; // Inicializar o maior como raiz
         int left = 2 * i + 1; // filho à esquerda
         int right = 2 * i + 2; // filho à direita
@@ -44,9 +46,17 @@ public class HeapSort {
     }
 
     // Método para trocar dois elementos no array
-    private void swap(int[] array, int i, int j) {
-        int temp = array[i];
+    private static void swap(long[] array, int i, int j) {
+        long temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+
+    // Método para imprimir o array
+    public static void printArray(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
     }
 }
