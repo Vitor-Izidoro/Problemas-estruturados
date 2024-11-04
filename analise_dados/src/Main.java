@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Arrays;
+imp ort java.util.Arrays;
 
 public class Main {
 
