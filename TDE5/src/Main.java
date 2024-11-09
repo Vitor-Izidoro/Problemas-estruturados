@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 import sort.HeapSort;
 import sort.MergeSort;
+import sort.QuickSort;
+import sort.InsertionSort;
 import util.ArrayGenerator;
 import util.CalcularTempo;
 
@@ -25,13 +27,15 @@ public class Main {
         long[] arrayDecrescente = ArrayGenerator.generateDescendingArray(tamanho);
 
         // Estrutura para armazenar os nomes dos algoritmos e os tempos formatados
-        String[][] resultados = new String[2][4];
+        String[][] resultados = new String[4][4]; // Atualizado para 4 algoritmos
 
         // Preenche os nomes dos algoritmos
         resultados[0][0] = "HeapSort";
         resultados[1][0] = "MergeSort";
+        resultados[2][0] = "QuickSort";
+        resultados[3][0] = "InsertionSort";
 
-        // Calcula e armazena os tempos em segundos, com duas casas decimais
+        // Calcula e armazena os tempos em segundos, com duas casas decimais para cada algoritmo
         resultados[0][1] = String.format("%.2f s", CalcularTempo.quaseOrdenado(arrayOrdenado.clone(), HeapSort::sort) / 1000.0);
         resultados[0][2] = String.format("%.2f s", CalcularTempo.desordenado(arrayDesordenado.clone(), HeapSort::sort) / 1000.0);
         resultados[0][3] = String.format("%.2f s", CalcularTempo.ordemDecrescente(arrayDecrescente.clone(), HeapSort::sort) / 1000.0);
@@ -39,6 +43,14 @@ public class Main {
         resultados[1][1] = String.format("%.2f s", CalcularTempo.quaseOrdenado(arrayOrdenado.clone(), MergeSort::mergeSort) / 1000.0);
         resultados[1][2] = String.format("%.2f s", CalcularTempo.desordenado(arrayDesordenado.clone(), MergeSort::mergeSort) / 1000.0);
         resultados[1][3] = String.format("%.2f s", CalcularTempo.ordemDecrescente(arrayDecrescente.clone(), MergeSort::mergeSort) / 1000.0);
+
+        resultados[2][1] = String.format("%.2f s", CalcularTempo.quaseOrdenado(arrayOrdenado.clone(), QuickSort::sort) / 1000.0);
+        resultados[2][2] = String.format("%.2f s", CalcularTempo.desordenado(arrayDesordenado.clone(), QuickSort::sort) / 1000.0);
+        resultados[2][3] = String.format("%.2f s", CalcularTempo.ordemDecrescente(arrayDecrescente.clone(), QuickSort::sort) / 1000.0);
+
+        resultados[3][1] = String.format("%.2f s", CalcularTempo.quaseOrdenado(arrayOrdenado.clone(), InsertionSort::sort) / 1000.0);
+        resultados[3][2] = String.format("%.2f s", CalcularTempo.desordenado(arrayDesordenado.clone(), InsertionSort::sort) / 1000.0);
+        resultados[3][3] = String.format("%.2f s", CalcularTempo.ordemDecrescente(arrayDecrescente.clone(), InsertionSort::sort) / 1000.0);
 
         // Exibir resultados
         tabelaAlgoritmos(tamanho, resultados);
@@ -60,7 +72,6 @@ public class Main {
         // Linha de separação entre título principal e subtítulos
         System.out.println("├────────────┬─────────────┼───────────────┬──────────────────────────┤");
 
-
         // Cabeçalho da tabela
         System.out.printf("│ %-10s │ %-17s │ %-12s │ %-19s │%n", "Algoritmo", "Quase ordenado", "Desordenado", "Ordem Decrescente");
 
@@ -70,7 +81,6 @@ public class Main {
         // Imprime os dados da tabela com divisórias
         for (String[] linha : resultados) {
             System.out.printf("│ %-10s │ %-17s │ %-12s │ %-19s │%n", linha[0], linha[1], linha[2], linha[3]);
-            // Linha de separação entre os dados
         }
 
         // Linha de separação inferior
