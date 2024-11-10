@@ -4,6 +4,7 @@ import sort.HeapSort;
 import sort.MergeSort;
 import sort.QuickSort;
 import sort.InsertionSort;
+import sort.Shellsort; // Importa o ShellSort
 import util.ArrayGenerator;
 import util.CalcularTempo;
 
@@ -12,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Solicitar o tamanho do array
+        // Solicita o tamanho do array ao usuário
         System.out.print("Informe o tamanho do array: ");
         int tamanho = scanner.nextInt();
 
@@ -22,18 +23,20 @@ public class Main {
             return;
         }
 
+        // Gera arrays de teste
         long[] arrayOrdenado = ArrayGenerator.generateSortedArray(tamanho);
         long[] arrayDesordenado = ArrayGenerator.generateUnorderedArray(tamanho);
         long[] arrayDecrescente = ArrayGenerator.generateDescendingArray(tamanho);
 
         // Estrutura para armazenar os nomes dos algoritmos e os tempos formatados
-        String[][] resultados = new String[4][4]; // Atualizado para 4 algoritmos
+        String[][] resultados = new String[5][4]; // Atualizado para 5 algoritmos
 
         // Preenche os nomes dos algoritmos
         resultados[0][0] = "HeapSort";
         resultados[1][0] = "MergeSort";
         resultados[2][0] = "QuickSort";
         resultados[3][0] = "InsertionSort";
+        resultados[4][0] = "ShellSort"; // Adiciona o ShellSort
 
         // Calcula e armazena os tempos em segundos, com duas casas decimais para cada algoritmo
         resultados[0][1] = String.format("%.2f s", CalcularTempo.quaseOrdenado(arrayOrdenado.clone(), HeapSort::sort) / 1000.0);
@@ -52,7 +55,12 @@ public class Main {
         resultados[3][2] = String.format("%.2f s", CalcularTempo.desordenado(arrayDesordenado.clone(), InsertionSort::sort) / 1000.0);
         resultados[3][3] = String.format("%.2f s", CalcularTempo.ordemDecrescente(arrayDecrescente.clone(), InsertionSort::sort) / 1000.0);
 
-        // Exibir resultados
+        // Adiciona o cálculo de tempo para ShellSort
+        resultados[4][1] = String.format("%.2f s", CalcularTempo.quaseOrdenado(arrayOrdenado.clone(), Shellsort::sort) / 1000.0);
+        resultados[4][2] = String.format("%.2f s", CalcularTempo.desordenado(arrayDesordenado.clone(), Shellsort::sort) / 1000.0);
+        resultados[4][3] = String.format("%.2f s", CalcularTempo.ordemDecrescente(arrayDecrescente.clone(), Shellsort::sort) / 1000.0);
+
+        // Exibe a tabela de resultados
         tabelaAlgoritmos(tamanho, resultados);
 
         scanner.close();
