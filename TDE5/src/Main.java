@@ -1,16 +1,9 @@
 import java.util.Scanner;
-
-import sort.HeapSort;
-import sort.MergeSort;
-import sort.QuickSort;
-import sort.InsertionSort;
-import sort.Shellsort;
-import sort.SelectionSort; // Importa o SelectionSort
+import sort.*;
 import util.ArrayGenerator;
 import util.CalcularTempo;
-
+import java.util.Arrays;
 public class Main {
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -24,10 +17,15 @@ public class Main {
             return;
         }
 
-        // Gera arrays de teste
-        long[] arrayOrdenado = ArrayGenerator.generateSortedArray(tamanho);
-        long[] arrayDesordenado = ArrayGenerator.generateUnorderedArray(tamanho);
-        long[] arrayDecrescente = ArrayGenerator.generateDescendingArray(tamanho);
+        // Gera o array base
+        long[] arrayBase = ArrayGenerator.generateBaseArray(tamanho);
+
+        // Cria os arrays derivados
+        long[] arrayOrdenado = ArrayGenerator.generateSortedArray(arrayBase);
+        long[] arrayDesordenado = ArrayGenerator.generateUnorderedArray(arrayBase);
+        long[] arrayDecrescente = ArrayGenerator.generateDescendingArray(arrayBase);
+        verificarArrays(arrayBase, arrayOrdenado, arrayDesordenado, arrayDecrescente);
+
 
         // Estrutura para armazenar os nomes dos algoritmos e os tempos formatados
         String[][] resultados = new String[6][4]; // Atualizado para 6 algoritmos
@@ -70,6 +68,36 @@ public class Main {
         tabelaAlgoritmos(tamanho, resultados);
 
         scanner.close();
+    }
+    public static void verificarArrays(long[] arrayBase, long[] arrayOrdenado, long[] arrayDesordenado, long[] arrayDecrescente) {
+        // Ordena uma cópia do arrayBase para comparação
+        long[] arrayBaseOrdenado = arrayBase.clone();
+        Arrays.sort(arrayBaseOrdenado);
+
+        // Verifica arrayOrdenado
+        if (Arrays.equals(arrayBaseOrdenado, arrayOrdenado)) {
+            System.out.println("arrayOrdenado tem os mesmos elementos que arrayBase (em ordem).");
+        } else {
+            System.out.println("arrayOrdenado tem elementos diferentes de arrayBase.");
+        }
+
+        // Verifica arrayDesordenado
+        long[] arrayDesordenadoOrdenado = arrayDesordenado.clone();
+        Arrays.sort(arrayDesordenadoOrdenado);
+        if (Arrays.equals(arrayBaseOrdenado, arrayDesordenadoOrdenado)) {
+            System.out.println("arrayDesordenado tem os mesmos elementos que arrayBase.");
+        } else {
+            System.out.println("arrayDesordenado tem elementos diferentes de arrayBase.");
+        }
+
+        // Verifica arrayDecrescente
+        long[] arrayDecrescenteOrdenado = arrayDecrescente.clone();
+        Arrays.sort(arrayDecrescenteOrdenado);
+        if (Arrays.equals(arrayBaseOrdenado, arrayDecrescenteOrdenado)) {
+            System.out.println("arrayDecrescente tem os mesmos elementos que arrayBase.");
+        } else {
+            System.out.println("arrayDecrescente tem elementos diferentes de arrayBase.");
+        }
     }
 
     public static void tabelaAlgoritmos(int size, String[][] resultados) {

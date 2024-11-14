@@ -6,34 +6,36 @@ import java.util.Random;
 public class ArrayGenerator {
     private static Random random = new Random();
 
-    // Gera um array ordenado com valores aleatórios
-    public static long[] generateSortedArray(int size) {
-        long[] array = new long[size];
+    // Gera um array base aleatório
+    public static long[] generateBaseArray(int size) {
+        long[] baseArray = new long[size];
         for (int i = 0; i < size; i++) {
-            array[i] = random.nextLong(); // Valores aleatórios
+            baseArray[i] = random.nextLong(); // Valores aleatórios
         }
+        return baseArray;
+    }
+
+    // Gera um array ordenado com base no array fornecido
+    public static long[] generateSortedArray(long[] baseArray) {
+        long[] array = Arrays.copyOf(baseArray, baseArray.length); // Cópia do array base
         Arrays.sort(array); // Ordena o array
         return array;
     }
 
-    // Gera um array em ordem decrescente com valores aleatórios
-    public static long[] generateDescendingArray(int size) {
-        long[] array = generateSortedArray(size); // Gera um array ordenado
-        for (int i = 0; i < size / 2; i++) {
+    // Gera um array em ordem decrescente com base no array fornecido
+    public static long[] generateDescendingArray(long[] baseArray) {
+        long[] array = generateSortedArray(baseArray); // Usa o array ordenado
+        for (int i = 0; i < array.length / 2; i++) {
             // Inverte para ordem decrescente
             long temp = array[i];
-            array[i] = array[size - 1 - i];
-            array[size - 1 - i] = temp;
+            array[i] = array[array.length - 1 - i];
+            array[array.length - 1 - i] = temp;
         }
         return array;
     }
 
-    // Gera um array desordenado com valores aleatórios
-    public static long[] generateUnorderedArray(int size) {
-        long[] array = new long[size];
-        for (int i = 0; i < size; i++) {
-            array[i] = random.nextLong(); // Valores aleatórios
-        }
-        return array;
+    // Gera um array desordenado (simplesmente faz uma cópia do array base)
+    public static long[] generateUnorderedArray(long[] baseArray) {
+        return Arrays.copyOf(baseArray, baseArray.length); // Retorna uma cópia do array base
     }
 }
