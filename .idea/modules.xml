@@ -4,6 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Pilha-Aplicacoes/Pilha-Aplicacoes.iml" filepath="$PROJECT_DIR$/Pilha-Aplicacoes/Pilha-Aplicacoes.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Problemas-estruturados.iml" filepath="$PROJECT_DIR$/.idea/Problemas-estruturados.iml" />
+<<<<<<< HEAD
+=======
+      <module fileurl="file://$PROJECT_DIR$/analise_dados/analise_dados.iml" filepath="$PROJECT_DIR$/analise_dados/analise_dados.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lista simplesmente encadeada/lista simplesmente encadeada.iml" filepath="$PROJECT_DIR$/lista simplesmente encadeada/lista simplesmente encadeada.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pilha_circular/pilha_circular.iml" filepath="$PROJECT_DIR$/pilha_circular/pilha_circular.iml" />
+>>>>>>> 6341d9874146f9d0ce3f9797be1f96f2561d26e2
     </modules>
   </component>
 </project>

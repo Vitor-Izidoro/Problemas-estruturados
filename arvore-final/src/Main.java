@@ -192,7 +192,7 @@ class AVLTree {
         tree.readWordsFromFiles(arquivos);
 
         // Contar ocorrências de uma palavra específica em cada arquivo
-        String termoParaContar = "computador";
+        String termoParaContar = "solicitation";
         tree.contarOcorrencias(termoParaContar, arquivos);
     }
 }
